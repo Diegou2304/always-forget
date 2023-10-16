@@ -38,9 +38,9 @@ namespace TravelersManager.Infrastructure
                 .UsingEntity<TravelerNumbers>();
         }
 
-        DbSet<Traveler> Travelers { get; set; }
-        DbSet<Address> Address { get; set; }
-        DbSet<PhoneNumber> PhoneNumbers { get; set; }
-        DbSet<Category> Category { get; set; }
+        public DbSet<Traveler> Travelers { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<PhoneNumber> PhoneNumbers { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

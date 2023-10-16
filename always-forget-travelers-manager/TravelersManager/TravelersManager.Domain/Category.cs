@@ -9,10 +9,11 @@ namespace TravelersManager.Domain
     public class Category
     {
         public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public ICollection<Traveler> Travelers { get; } = new List<Traveler>();
         public CategoryIdentifier CategoryIdentifier { get; set;}
     }
-
+        
     public enum CategoryIdentifier
     {
         Smart = 1,

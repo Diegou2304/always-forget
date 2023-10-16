@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelersManager.Infrastructure.Repositories;
 
 namespace TravelersManager.Infrastructure
 {
@@ -15,6 +16,7 @@ namespace TravelersManager.Infrastructure
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, 
                                                                     IConfiguration configuration)
         {
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddDbContext<TravelersManagerDbContext>(opt => opt.UseSqlServer(
                      configuration.GetConnectionString("ConnectionString")
             ));
