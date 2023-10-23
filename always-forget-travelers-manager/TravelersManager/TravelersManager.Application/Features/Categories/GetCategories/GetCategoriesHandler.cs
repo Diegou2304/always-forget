@@ -2,7 +2,7 @@
 using MediatR;
 using TravelersManager.Infrastructure.Repositories;
 
-namespace TravelersManager.Application.Features.Categories
+namespace TravelersManager.Application.Features.Categories.GetCategories
 {
     public class GetCategoriesHandler : IRequestHandler<GetCategoriesRequest, IEnumerable<GetCategoriesResult>>
     {
@@ -13,11 +13,11 @@ namespace TravelersManager.Application.Features.Categories
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;
-            
-            
+
+
         }
-      
-      
+
+
 
         public async Task<IEnumerable<GetCategoriesResult>> Handle(GetCategoriesRequest request, CancellationToken cancellationToken)
         {
@@ -25,7 +25,7 @@ namespace TravelersManager.Application.Features.Categories
 
             return _mapper.Map<IEnumerable<GetCategoriesResult>>(result);
 
-            
+
         }
     }
 }

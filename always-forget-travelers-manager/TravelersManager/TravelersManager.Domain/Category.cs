@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Update.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +12,16 @@ namespace TravelersManager.Domain
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public ICollection<Traveler> Travelers { get; } = new List<Traveler>();
-        public CategoryIdentifier CategoryIdentifier { get; set;}
+    
+        private Category() { }
+        
+        public void Update(string categoryName)
+        {
+            CategoryName = categoryName;
+
+
+        }
     }
         
-    public enum CategoryIdentifier
-    {
-        Smart = 1,
-        Lazy = 2,
-        Forgetful = 3,
-    }
+  
 }

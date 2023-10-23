@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TravelersManager.Domain;
 
 namespace TravelersManager.Infrastructure.Repositories
@@ -17,7 +12,34 @@ namespace TravelersManager.Infrastructure.Repositories
         }
         public async Task<IEnumerable<Category>> GetCategories()
         {
-            return await _context.Category.ToListAsync();
+            return await _context.Category.AsNoTracking().ToListAsync();
+        }
+        
+        public async Task<Category?> CreateCategory(Category category)
+        {
+            await _context.Category.AddAsync(category);
+            int affectedRows = _context.SaveChanges();
+            
+            return affectedRows > 0 ? category : null;
+        }
+
+        public async Task<Category?> UpdateCategory(Category category)
+        {
+            _context.Category.Update(category);
+            int affectedRows = _context.SaveChanges();
+
+            return affectedRows >= 0 ? category : null;
+        }
+
+      
+        public async Task<Category?> GetCategoryById(int id)
+        {
+            return await _context.Category.FirstOrDefaultAsync(v => v.CategoryId == id);
+        }
+
+        public async Task<bool> IsCategoryNameUniqueAsync(string categoryName)
+        {
+            return !await _context.Category.AnyAsync(x => x.CategoryName == categoryName);
         }
     }
 }
