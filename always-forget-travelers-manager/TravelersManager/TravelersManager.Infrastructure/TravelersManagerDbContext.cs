@@ -25,7 +25,8 @@ namespace TravelersManager.Infrastructure
         {
             modelBuilder.Entity<Traveler>()
                 .HasOne(c => c.Category)
-                .WithMany(t => t.Travelers);
+                .WithMany(t => t.Travelers)
+                .HasForeignKey(t => t.CategoryId);
 
             modelBuilder.Entity<Traveler>()
                 .HasMany(a => a.Addresses)

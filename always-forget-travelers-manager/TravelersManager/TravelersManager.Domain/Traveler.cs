@@ -10,6 +10,7 @@ namespace TravelersManager.Domain
         public List<Address> Addresses { get; set; } = new();
         public List<TravelerNumbers> TravelerNumbers { get; } = new();
         public List<TravelerAddress> TravelerAddresses { get; } = new();
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
 
 

@@ -17,9 +17,11 @@ namespace TravelersManager.Infrastructure
                                                                     IConfiguration configuration)
         {
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ITravelerRepository, TravelerRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddDbContext<TravelersManagerDbContext>(opt => opt.UseSqlServer(
                      configuration.GetConnectionString("ConnectionString")
-            ));
+            ).EnableSensitiveDataLogging());
 
             return services;
         }

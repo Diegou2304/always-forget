@@ -7,8 +7,7 @@ namespace TravelersManager.Domain
     {
         public string Name { get; set; }
         public string LastName { get; set; }
-        public DateTime Birthdate { get; set; }
-        public string Address { get; set; }
+        public DateTime Birthdate { get; set; } 
         public string Dni { get; set; }
         public CivilState CivilState { get; set; }
         public string Email { get; set; }
