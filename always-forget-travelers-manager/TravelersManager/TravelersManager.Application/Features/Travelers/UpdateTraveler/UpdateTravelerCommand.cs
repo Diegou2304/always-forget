@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TravelersManager.Application.Features.Travelers.GetTravelers;
 
 namespace TravelersManager.Application.Features.Travelers.UpdateTraveler
 {

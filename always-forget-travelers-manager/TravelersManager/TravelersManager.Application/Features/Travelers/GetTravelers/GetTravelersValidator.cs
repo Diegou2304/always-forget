@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using FluentValidation;
+using System.Text.RegularExpressions;
 
 namespace TravelersManager.Application.Features.Travelers.GetTravelers
 {
-    internal class GetTravelersValidator
+    public class GetTravelersValidator : AbstractValidator<GetTravelersRequest>
     {
+
+        public GetTravelersValidator()
+        {
+
+            RuleFor(x => x.PhoneNumber).Custom((num, context) =>
+            {
+                var pattern = "^[0-9]+$";
+                if (!Regex.IsMatch(num, pattern)) context.AddFailure("El numero no debe contener letras");
+
+            }).When(x => !string.IsNullOrEmpty(x.PhoneNumber));
+
+           
+        }
+
+      
     }
 }

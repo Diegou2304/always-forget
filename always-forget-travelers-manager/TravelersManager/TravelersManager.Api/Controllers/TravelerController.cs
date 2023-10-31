@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Net.Mime;
 using TravelersManager.Application.Features.Travelers.CreateTravelers;
 using TravelersManager.Application.Features.Travelers.GetTravelers;
