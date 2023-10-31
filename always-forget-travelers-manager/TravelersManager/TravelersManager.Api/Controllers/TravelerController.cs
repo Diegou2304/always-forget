@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Net.Mime;
 using TravelersManager.Application.Features.Travelers.CreateTravelers;
 using TravelersManager.Application.Features.Travelers.GetTravelers;
+using TravelersManager.Application.Features.Travelers.UpdateTraveler;
 
 namespace TravelersManager.Api.Controllers
 {
@@ -35,5 +36,13 @@ namespace TravelersManager.Api.Controllers
             
             return await _mediator.Send(command);
         }
+
+        [HttpPut("travelers/{id}")]
+        public async Task<IActionResult> UpdateTraveler(int id, [FromBody] UpdateTravelerCommand command)
+        {
+            command.TravelerId = id;
+            return await _mediator.Send(command);
+        }
+       
     }
 }

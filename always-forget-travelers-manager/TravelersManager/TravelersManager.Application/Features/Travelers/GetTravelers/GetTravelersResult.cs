@@ -7,9 +7,9 @@ namespace TravelersManager.Application.Features.Travelers.GetTravelers
     public class GetTravelersResult : Person
     {
         public int TravelerId { get; set; }
-        public List<PhoneNumberDto> PhoneNumbers { get; } = new();
-        public List<AddressDto> Addresses { get; set; } = new();
-        public CategoryDto Category { get; set; }
+        public List<GetTravelerPhoneNumberDto> PhoneNumbers { get; } = new();
+        public List<GetTravelerAddressDto> Addresses { get; set; } = new();
+        public GetTravelerCategoryDto Category { get; set; }
 
     }
 
@@ -18,7 +18,6 @@ namespace TravelersManager.Application.Features.Travelers.GetTravelers
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime Birthdate { get; set; }
-        public string Address { get; set; }
         public string Dni { get; set; }
         public CivilState CivilState { get; set; }
         public string Email { get; set; }
@@ -26,16 +25,17 @@ namespace TravelersManager.Application.Features.Travelers.GetTravelers
 
 
     }
-    public class PhoneNumberDto
+    public class GetTravelerPhoneNumberDto
     {
         public string TelefonicNumber { get; set; }
     }
-    public class AddressDto
+    public class GetTravelerAddressDto
     {
         public string Direction { get; set; }
     }
-    public class CategoryDto
+    public class GetTravelerCategoryDto
     {
+        public int CategoryId { get; set; }
         public string CategoryName { get; set; }
     }
 

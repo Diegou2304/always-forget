@@ -55,6 +55,15 @@ namespace TravelersManager.Infrastructure.Repositories
             return affectedRows > 0 ? traveler : null;
         }
 
-      
+        public async Task<Traveler?> GetTravelerByIdAsync(int id)
+        {
+            return await _context.Travelers.FirstOrDefaultAsync(x => x.TravelerId == id);
+        }
+
+        public async Task UpdateTravelerAsync(Traveler traveler)
+        {
+             _context.Travelers.Update(traveler);
+             _context.SaveChanges();
+        }
     }
 }

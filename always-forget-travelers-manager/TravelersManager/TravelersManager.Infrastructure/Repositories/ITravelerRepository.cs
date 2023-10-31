@@ -11,5 +11,7 @@ namespace TravelersManager.Infrastructure.Repositories
     {
         Task<IEnumerable<Traveler>> GetTravelersAsync(string? phoneNumber, string? category);
         Task<Traveler?> CreateTraveler(Traveler traveler);
+        Task<Traveler?> GetTravelerByIdAsync(int id);
+        Task UpdateTravelerAsync(Traveler traveler);
     }
 }

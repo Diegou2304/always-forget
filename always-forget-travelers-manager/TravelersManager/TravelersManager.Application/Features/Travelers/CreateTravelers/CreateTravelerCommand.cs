@@ -12,22 +12,23 @@ namespace TravelersManager.Application.Features.Travelers.CreateTravelers
         public string Dni { get; set; }
         public CivilState CivilState { get; set; }
         public string Email { get; set; }
-        public List<GetPhoneNumberDto> PhoneNumbers { get; set; } = new();
-        public List<GetAddressDto> Addresses { get; set; } = new();
-        public GetCategoryDto Category { get; set; }
-
+        public List<CreateTravelerPhonenumberDto> PhoneNumbers { get; set; } = new();
+        public List<CreateTravelerAddressDto> Addresses { get; set; } = new();
+        public CreateTravelerCategoryDto Category { get; set; }
+        
+        public class CreateTravelerPhonenumberDto
+        {
+            public string TelefonicNumber { get; set; }
+        }
+        public class CreateTravelerAddressDto
+        {
+            public string Direction { get; set; }
+        }
+        public class CreateTravelerCategoryDto
+        {
+            public int CategoryId { get; set; }
+        }
     }
 
-    public class GetPhoneNumberDto
-    {
-        public string TelefonicNumber { get; set; }
-    }
-    public class GetAddressDto
-    {
-        public string Direction { get; set; }
-    }
-    public class GetCategoryDto
-    {
-        public string CategoryName { get; set; }
-    }
+   
 }

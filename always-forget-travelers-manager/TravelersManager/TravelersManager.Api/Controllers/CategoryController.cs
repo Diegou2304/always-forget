@@ -34,12 +34,12 @@ namespace TravelersManager.Api.Controllers
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult> CreateCategory([FromBody] CreateCategoryCommand command)
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand command)
         {
          
-            await _mediator.Send(command);
-            return CreatedAtRoute(command.CategoryIdentifier, new { CategoryIdentifier = command.CategoryIdentifier, CategoryId = command.CategoryIdentifier });
             
+            return await _mediator.Send(command);
+
         }
 
         [HttpPut("categories/{id}")]

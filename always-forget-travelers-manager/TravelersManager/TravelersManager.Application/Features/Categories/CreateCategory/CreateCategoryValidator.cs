@@ -16,11 +16,7 @@ namespace TravelersManager.Application.Features.Categories.CreateCategory
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("El nombre de la categoria no puede estar vacío");
-            RuleFor(x => x.CategoryIdentifier)
-                .NotEmpty()
-                .NotNull()
-                .IsInEnum()
-                .WithMessage("El identificador de la catogoria no puede estar vacío");
+  
         
             
         }

@@ -6,7 +6,7 @@ using TravelersManager.Infrastructure.Repositories;
 
 namespace TravelersManager.Application.Features.Categories.CreateCategory
 {
-    public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand>
+    public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand,IActionResult>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
@@ -17,25 +17,17 @@ namespace TravelersManager.Application.Features.Categories.CreateCategory
             _mapper = mapper;
         }
 
-        public async Task Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
-        {
-            var category = _mapper.Map<Category>(request);
-
-
-
-            await CategoryAlreadyExists(category.CategoryId);
-
-            var result = await _categoryRepository.CreateCategory(category);
-            if (result is null)
+        public async Task<IActionResult> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+        { 
+            if (await _categoryRepository.IsCategoryNameUniqueAsync(request.CategoryName))
             {
-                return;
+                var category = _mapper.Map<Category>(request);
+                var result = await _categoryRepository.CreateCategory(category);
+                return new OkObjectResult(new {CategoryId = result.CategoryId});
             }
+            return new BadRequestObjectResult(new { Message = "La categoria ya existe" });
         }
 
-        private async Task<bool> CategoryAlreadyExists(int categoryId)
-        {
-            var result = await _categoryRepository.GetCategoryById(categoryId);
-            return result != null;
-        }
+       
     }
 }
