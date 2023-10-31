@@ -1,6 +1,4 @@
 ﻿
-using TravelersManager.Domain.JoinEntities;
-using TravelersManager.Domain;
 
 namespace TravelersManager.Application.Features.Travelers.GetTravelers
 {

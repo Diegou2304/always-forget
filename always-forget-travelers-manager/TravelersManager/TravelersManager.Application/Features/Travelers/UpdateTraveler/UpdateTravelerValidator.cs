@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace TravelersManager.Application.Features.Travelers.UpdateTraveler
 {
-    internal class UpdateTravelerValidator
+    public class UpdateTravelerValidator : AbstractValidator<UpdateTravelerCommand>
     {
+        public UpdateTravelerValidator() 
+        {
+            RuleFor(x => x.TravelerId).NotEmpty().NotNull();
+        
+        }
     }
 }

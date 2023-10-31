@@ -7,17 +7,14 @@ namespace TravelersManager.Application.Features.Categories.CreateCategory
 {
     public class CreateCategoryValidator : AbstractValidator<CreateCategoryCommand>
     {
-        private readonly ICategoryRepository _categoryRepository;
 
-        public CreateCategoryValidator(ICategoryRepository categoryRepository)
+        public CreateCategoryValidator()
         {
-            _categoryRepository = categoryRepository;
+
             RuleFor(x => x.CategoryName)
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("El nombre de la categoria no puede estar vacío");
-  
-        
             
         }
     }
